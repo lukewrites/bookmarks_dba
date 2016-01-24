@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
 
 ]
 
@@ -58,8 +59,7 @@ ROOT_URLCONF = 'bookmarks_dba.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'account/templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'account/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,3 +129,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social.backends.facebook.Facebook2OAuth2',
+
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '817289151714070'  # Facebook app ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '969a2c67c5322da7c0828bd20532e618'
