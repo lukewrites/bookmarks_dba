@@ -1,11 +1,12 @@
-from django import forms
 from .models import Image
 from urllib import request
+from django import forms
 from django.core.files.base import ContentFile
 from django.utils.text import slugify
 
 
 class ImageCreateForm(forms.ModelForm):
+
     class Meta:
         model = Image
         fields = ('title', 'url', 'description')
@@ -21,10 +22,7 @@ class ImageCreateForm(forms.ModelForm):
             raise forms.ValidationError('That URL doesn\'t work.')
         return url
 
-    def save(self,
-             force_insert=False,
-             force_update=False,
-             commit=True):
+    def save(self, force_insert=False, force_update=False, commit=True):
         image = super(ImageCreateForm, self).save(commit=False)
         image_url = self.cleaned_data['url']
         image_name = '{}.{}'.format(slugify(image.title),

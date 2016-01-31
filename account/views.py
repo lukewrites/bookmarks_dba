@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from .forms import LoginForm, UserRegistrationForm, UserEditForm, \
-                   ProfileEditForm
+                  ProfileEditForm
 from .models import Profile
 
 
