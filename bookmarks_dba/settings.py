@@ -139,3 +139,7 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = '817289151714070'  # Facebook app ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '969a2c67c5322da7c0828bd20532e618'
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
